@@ -1,0 +1,112 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body,hmtl{
+		padding: 0;
+		margin: 0;
+		background-color: #B7B7B7;
+}
+h1,h3,h2{
+	font-family: Baskerville, "Palatino Linotype", Palatino, "Century Schoolbook L", "Times New Roman", "serif"
+}
+h2{
+	text-align: center;
+	font-size: 24px;
+}
+h3{
+	font-size: 18px;
+}
+nav{
+	background-color: #EC42F1;
+	text-align: center;
+	padding: 10px;
+	box-sizing: border-box;
+	font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+}
+nav a{
+	color: #000;
+	font-size: 17px;
+	text-decoration: none;
+}
+nav ul{
+	list-style-type: none;
+}
+nav ul li{
+	display: inline-block;
+	padding: 20px;
+	box-sizing: border-box;
+}
+nav ul li:hover{
+	color: #000000
+}
+.button{
+	border: none;
+	outline: 0;
+	display: inline-block;
+	padding: 5px 6px;
+	box-sizing: border-box;
+	color: #FFF;
+	background-color: #454545;
+	text-align: center;
+	cursor: pointer;
+	font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+	font-size: 12px;
+}
+header h1{
+	text-align: center;
+	color: #FFF;
+	font-size: 35px;
+	text-shadow: 3px 3px 8px #000;
+}
+header{
+/*		background-color: #B7B7B7;*/
+	color: #FFFFFF;
+	padding: 20px 40px;
+	width: 100%;
+	box-sizing: border-box;
+}
+.main{
+	box-sizing: border-box;
+	margin-right: 19%;
+/*	height: 90%*/
+}
+article{
+	padding: 10px;
+	box-sizing: border-box;
+	background-color: #FFFFFF;
+	margin: 1% 1% 0% 0%;
+	height: 465px;
+}
+aside{
+	display: block;
+	box-sizing: border-box;
+	height: 465px;
+	width: 18%;
+	position: absolute;
+	text-align: center;
+	right: 0;
+	background-color: #EC42F1;
+	margin: 1% 0;
+}
+aside li{
+	box-sizing: border-box;
+	padding-left: 8px;
+	padding-right: 18px;
+}
+.sidelinks{
+	text-align: left;
+	font-size: 17px;
+}
+footer{
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: #FFF;
+	height: 30px;
+	color: #191919;
+	text-align: center;
+	padding-top: 5px;
+	box-sizing: border-box;
+	font-size: 13px;
+}
