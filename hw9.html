@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<meta charset="UTF-8">
+<title>JSON HW 9</title>
+	
+<style>
+	body{
+		font-family: Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
+		text-align: center;
+	}
+	p{
+		margin: 0.5%;
+	}
+	h4{
+		margin-bottom: 0;
+		margin-top: 2%;
+	}
+</style>
+</head>
+
+<body>
+	<script language="javascript">
+		Setlist = {
+			"song1" : {
+				"name": "500 Days of Summer",
+				"artist": ["Grady"],
+				"genre": ["Pop"],
+				"released" : "2019",
+				},
+			"song2" : {
+				"name": "1950",
+				"artist": ["King Princess"],
+				"genre": ["Pop"],
+				"released" : "2018",
+				},
+			"song3" : {
+				"name": "Take Me to Church",
+				"artist": ["Hozier"],
+				"genre": ["Alternative"],
+				"released" : "2014",
+				},
+			"song4" : {
+				"name": "Jackie and Wilson",
+				"artist": ["Hozier"],
+				"genre": ["Alternative"],
+				"released" : "2014",
+				},
+			"song5" : {
+				"name": "I Forgot That You Existed",
+				"artist": ["Taylor Swift"],
+				"genre": ["Pop"],
+				"released" : "2019",
+				},
+			"song6" : {
+				"name": "Minimum",
+				"artist": ["Charlie Cunningham"],
+				"genre": ["Alternative"],
+				"released" : "2017",
+				},
+			"song7" : {
+				"name": "Bohemian Rhapsody",
+				"artist": ["Queen"],
+				"genre": ["Rock"],
+				"released" : "1975",
+				},
+			"song8" : {
+				"name": "She Loves Control",
+				"artist": ["Camilla Cabello"],
+				"genre": ["Pop"],
+				"released" : "2018",
+				},
+			"song9" : {
+				"name": "Dancing in the Dark",
+				"artist": ["Bruce Springsteen"],
+				"genre": ["Rock"],
+				"released" : "2019",
+				},
+			"song10" : {
+				"name": "tous les meme",
+				"artist": ["Stromae"],
+				"genre": ["Pop"],
+				"released" : "2013",
+				}		
+		};
+		document.write("<h2> Part 2: Serialized and Display </h2>");
+		for (i = 1; i <= 10; i++){
+			currSong = "song" + i;
+			curr = JSON.stringify(Setlist[currSong]);
+			document.write(curr + "<br>");
+		}
+		document.write("<h2> Part 3/4: User Friendly Display, Sorted </h2>");
+		
+		
+	
+	</script>
+	<select id = "dropdown">
+		<option value="">Choose an option:</option>
+		<option value="pop">Pop</option>
+		<option value="alt">Alternative</option>
+		<option value="rock">Rock</option>
+	</select>
+	<button type="button" onClick="printList()">Filter</button>
+
+	<div id="container">
+	</div>
+	
+	
+	<script language="javascript">
+		for (i = 1; i <= 10; i++){
+			currSong = "song" + i;
+			currObj = Setlist[currSong];
+			$("#container").append('<h4>' + currObj["name"] + '</h4><p>Artist: ' + currObj["artist"] + '</p>' +
+								 '<p>Genre: ' + currObj["genre"] + '</p><p>Released: ' + currObj["released"] + '</p>');
+		}
+		
+		function printList(){
+			console.log("in printLine");
+			currIndex= document.getElementById("dropdown").selectedIndex;
+			currElem = document.getElementById("dropdown").options;
+			currSelected = currElem[currIndex].text;
+			$("#container").empty();
+			//display all of them by default
+			if(currSelected == "Choose an option:"){
+				for (i = 1; i <= 10; i++){
+					currSong = "song" + i;
+					currObj = Setlist[currSong];
+					$("#container").append('<h4>' + currObj["name"] + '</h4><p>Artist: ' + currObj["artist"] + '</p>' +
+										 '<p>Genre: ' + currObj["genre"] + '</p><p>Released: ' + currObj["released"] + '</p>');
+				}
+			}//iterate through and display matches
+			else{
+				for (i = 1; i <= 10; i++){
+					currSong = "song" + i;
+					currObj = Setlist[currSong];
+					if(currObj["genre"] == currSelected){
+						$("#container").append('<h4>' + currObj["name"] + '</h4><p>Artist: ' + currObj["artist"] + '</p>' +
+											 '<p>Genre: ' + currObj["genre"] + '</p><p>Released: ' + currObj["released"] + '</p>');
+					}
+				}
+			}		
+		}
+	</script>
+</body>
+</html>
