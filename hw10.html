@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<meta charset="UTF-8">
+<title>News API</title>
+	
+<style>
+	p{
+		margin: 2px;
+	}
+	body{
+		font-family: Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif"
+	}
+</style>
+</head>
+
+<body>
+	<script>
+  //I got some help in this section from the in-class example we did last week
+		request = new XMLHttpRequest();
+		console.log("1 - request object created");
+		
+		// Step 2: Set the URL for the AJAX request to be the JSON file
+		//API key: 6d1QEggLKxnhH4bb0DRbfZZmzLV9WNs7Vs2R5opc
+		request.open("GET", "https://newsapi.org/v2/top-headlines?country=us&apiKey=c9cdc407af664f0cb67da011916846b7", true);
+		
+		// Step 3: set up event handler/callback
+
+		request.onreadystatechange = function() {
+			console.log("3 - readystatechange event fired.");
+
+			if (request.readyState == 4 && request.status == 200) {
+
+				// Step 5: wait for done + success
+
+				result = request.responseText;
+				info = JSON.parse(result);
+				document.getElementById("header").innerHTML ="<h1>Today's top headlines are : </h1><br>"
+				for(i = 0; i < 5; i++){
+					$("#headlines").append('<p> - ' + info["articles"][i]["title"] + "</p><br>");
+				}
+
+			}
+			else if (request.readyState == 4 && request.status != 200) {
+
+				document.getElementById("header").innerHTML = "Something is wrong!  Check the logs to see where this went off the rails";
+
+			}
+
+			else if (request.readyState == 3) {
+
+				document.getElementById("header").innerHTML = "Too soon!  Try again";
+
+			}
+
+		}
+	// Step 4: fire off the HTTP request
+		request.send();
+		console.log("4 - Request sent");
+	</script>
+	
+	<div id="header"></div>
+	<div id="headlines"></div>
+	<h2>Information on this API</h2>
+	<p>This API is called "News API". It is a database of information about the world's top news stories.
+	   The database I used above is from their top USA news stories.</p>
+	<p>I just searched for free APIs and looked around at the results, and this one seemed interesting.
+	    The link to their documentation is <a href="https://newsapi.org/">here</a></p>
+	<p>I used their US Top Headlines database, specifically the array of articles and their respective titles.</p>
+	<p>This might be useful for a current events blogger, as a sort of headline section they could comment on. Also,
+	   if someone wanted to keep track of specific news events.
+	   For example, you can also get headlines from specific topics or sources, like top news stories about Trump,
+	   Bitcoin, any specific country, etc. It's a pretty extensive source if you want particular news updates.</p>
+</body>
+</html>
